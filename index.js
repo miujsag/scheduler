@@ -1,4 +1,4 @@
-const {CronJob} = require('cron')
+const { CronJob } = require('cron')
 const db = require('db')
 const rss = require('./lib/rss')
 const weather = require('./lib/weather')
@@ -9,11 +9,11 @@ rss.run()
 weather.run()
 rate.run()
 
-new CronJob('* * * * *', function() {
+new CronJob('* * * * *', function () {
   rss.run()
 }).start()
 
-new CronJob('*/5 * * * *', function() {
+new CronJob('*/5 * * * *', function () {
   weather.run()
 }).start()
 
