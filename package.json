@@ -7,18 +7,20 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "standard",
+    "lint-fix": "standard --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "classifier": "file:../classifier",
     "cron": "^1.7.1",
     "db": "file:../db",
     "dotenv": "^8.0.0",
-    "search": "file:../search",
     "scraper": "file:../scraper",
-    "classifier": "file:../classifier",
-    "logger": "file:../logger"
+    "logger": "file:../logger",
+    "search": "file:../search",
+    "standard": "^13.0.2"
   }
 }
