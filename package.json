@@ -18,6 +18,7 @@
     "dotenv": "^8.0.0",
     "search": "file:../search",
     "scraper": "file:../scraper",
-    "classifier": "file:../classifier"
+    "classifier": "file:../classifier",
+    "logger": "file:../logger"
   }
 }
