@@ -8,19 +8,20 @@
   },
   "scripts": {
     "lint": "standard",
-    "lint-fix": "standard --fix"
+    "lint-fix": "standard --fix",
+    "seed": "node bin/seed.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "classifier": "file:../classifier",
+    "classifier": "git://github.com/miujsag/classifier.git",
     "cron": "^1.7.1",
-    "db": "file:../db",
+    "db": "git://github.com/miujsag/db.git",
     "dotenv": "^8.0.0",
-    "scraper": "file:../scraper",
-    "logger": "file:../logger",
-    "search": "file:../search",
+    "scraper": "git://github.com/miujsag/scraper.git",
+    "logger": "git://github.com/miujsag/logger.git",
+    "search": "git://github.com/miujsag/search.git",
     "standard": "^13.0.2"
   }
 }
