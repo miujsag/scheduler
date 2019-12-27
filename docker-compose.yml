@@ -8,6 +8,8 @@ services:
       POSTGRES_DB: miujsag.org
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+    volumes:
+       - postgres_data:/opt/miujsag_postgres
     ports:
       - "5433:5432"
 
@@ -17,5 +19,10 @@ services:
     restart: always
     environment:
       - discovery.type=single-node
+    volumes:
+       - elasticsearch_data:/opt/miujsag_elasticsearch
     ports:
     - "9699:9200"
+volumes:
+  postgres_data:
+  elasticsearch_data: 
