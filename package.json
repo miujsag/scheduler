@@ -15,11 +15,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "classifier": "git://github.com/miujsag/classifier.git",
+    "classifier": "file:../classifier",
     "cron": "^1.7.1",
-    "db": "git://github.com/miujsag/db.git",
+    "db": "file:../db",
     "dotenv": "^8.0.0",
-    "scraper": "git://github.com/miujsag/scraper.git",
+    "scraper": "file:../scraper",
     "logger": "git://github.com/miujsag/logger.git",
     "search": "git://github.com/miujsag/search.git",
     "standard": "^13.0.2"
