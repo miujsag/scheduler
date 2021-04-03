@@ -5,24 +5,43 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_DB: miujsag.org
+      POSTGRES_DB: miujsag
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
-       - postgres_data:/opt/miujsag_postgres
+      - postgres_data:/media/laszlo/849b97e1-a82a-49a3-b49b-01f632be66c8/work/miujsag/postgres_db
     ports:
-      - "5433:5432"
+      - "5444:5432"
 
-  
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    links:
+      - "postgres:psql-server"
+    restart: unless-stopped
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
     restart: always
     environment:
       - discovery.type=single-node
     volumes:
-       - elasticsearch_data:/opt/miujsag_elasticsearch
+      - elasticsearch_data:- postgres_data:/media/laszlo/849b97e1-a82a-49a3-b49b-01f632be66c8/work/miujsag/elasticsearch_db
     ports:
-    - "9699:9200"
+      - "9200:9200"
+
+networks:
+  postgres:
+    driver: bridge
+
 volumes:
   postgres_data:
-  elasticsearch_data: 
+  pgadmin:
+  elasticsearch_data:
