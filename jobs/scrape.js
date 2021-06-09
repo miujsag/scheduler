@@ -71,14 +71,23 @@ async function scrapeArticles(articles, previousArticle, categoryClassifier) {
     }
 
     if (article.site.ArticleSelector) {
-      const scrapedArticle = await Scraper.Article.scrape(article.url, {
-        content: article.site.ArticleSelector.content,
-      });
+      const scrapedArticle = await Scraper.Article.scrape(
+        article.url,
+        article.site.ArticleSelector
+      );
+
+      const updateParams = {
+        content: scrapedArticle.content,
+        image: article.image || scrapedArticle.image,
+        author: article.author || scrapedArticle.author,
+        description: article.description || scrapedArticle.description,
+        published_at: article.published_at || scrapedArticle.published_at,
+      };
 
       if (scrapedArticle && scrapedArticle.html) {
         const updatedArticle = await Article.update(
           article,
-          cleanObject(scrapedArticle)
+          cleanObject(updateParams)
         );
 
         await classifyArticle(updatedArticle, categoryClassifier);
